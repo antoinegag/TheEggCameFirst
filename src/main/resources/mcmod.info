@@ -1,8 +1,14 @@
 [
 {
+  "modid": "tecf",
+  "name": "The Egg Came First",
+  "description": "Yes, the Egg came first.",
+  "version": "1.0",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
+  "authorList": ["Poke1650"],
+  "credits": "bafomdad for the idea",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
