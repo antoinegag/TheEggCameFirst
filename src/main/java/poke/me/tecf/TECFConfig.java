@@ -1,36 +1,32 @@
 package poke.me.tecf;
 
-import net.minecraftforge.common.config.Config;
-import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.ForgeConfigSpec;
+import org.apache.commons.lang3.tuple.Pair;
 
 /**
  * Created by Poke on 2017-10-21.
  */
-@Config(modid = TECF.MODID)
 public class TECFConfig
 {
-    @Config.Comment({"Sets the ammount of egg that should spawn where a chiken would have. Default: 1" })
-    public static int eggSpawnAmmount = 1;
+    public static final ServerConfig SERVER;
+    public static final ForgeConfigSpec SERVER_SPECIFICATION;
 
-    private static final String CATEGORY_GENERAL = "general";
-
-    public static void readConfig()
+    static
     {
-        Configuration config = TECF.config;
-        try
-        {
-            config.load();
-            config.addCustomCategoryComment(CATEGORY_GENERAL, "General configuration");
-            eggSpawnAmmount = config.getInt("eggSpawnAmmount",CATEGORY_GENERAL, eggSpawnAmmount, 0, Integer.MAX_VALUE, "Sets the ammount of egg that should spawn where a chiken would have. Default: 1" );
-        } catch (Exception e1)
-        {
-            System.out.println("Failed to read config file!");
-            e1.printStackTrace();
-        } finally
-        {
-            if(config.hasChanged())
-                config.save();
-        }
+        Pair<ServerConfig, ForgeConfigSpec> specificationPair = new ForgeConfigSpec.Builder().configure(ServerConfig::new);
+        SERVER_SPECIFICATION = specificationPair.getRight();
+        SERVER = specificationPair.getLeft();
     }
 
+    public static class ServerConfig
+    {
+        public final ForgeConfigSpec.IntValue eggSpawnAmount;
+
+        ServerConfig(ForgeConfigSpec.Builder builder)
+        {
+            eggSpawnAmount = builder
+                    .comment("Sets the amount of eggs that should spawn where a chicken would have. Default: 1\"")
+                    .defineInRange("eggSpawnAmount", 1, 1, Integer.MAX_VALUE);
+        }
+    }
 }
