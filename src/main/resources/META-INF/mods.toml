@@ -1,12 +1,12 @@
 modLoader="javafml"
-loaderVersion="[31,)"
+loaderVersion="[34,)"
 #updateJSONURL=""
 issueTrackerURL="https://github.com/antoinegag/TheEggCameFirst/issues"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/the-egg-came-first"
 #logoFile=""
 credits="bafomdad for the idea"
 authors="Poke1650"
-
+license="MIT"
 [[mods]]
 modId="tecf"
 version="${file.jarVersion}"
@@ -18,12 +18,12 @@ Yes, the Egg came first.
 [[dependencies.tecf]]
    modId="forge"
    mandatory=true
-   versionRange="[31,)"
+   versionRange="[34,)"
    ordering="NONE"
-   side="BOTH"
+   side="SERVER"
 [[dependencies.tecf]]
    modId="minecraft"
    mandatory=true
-   versionRange="[1.15,]"
+   versionRange="[1.16,]"
    ordering="NONE"
-   side="BOTH"
+   side="SERVER"
